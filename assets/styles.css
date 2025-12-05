@@ -1,0 +1,203 @@
+:root {
+  --bg-main: #050814;
+  --bg-card: #0b1020;
+  --bg-soft: #11162a;
+  --accent: #3ad9ff;
+  --accent-soft: rgba(58, 217, 255, 0.12);
+  --text-main: #f6f7fb;
+  --text-muted: #a3acca;
+  --border-subtle: #202842;
+  --danger: #ff4b6b;
+  --success: #41f39b;
+  --warning: #ffc857;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+  color: var(--text-main);
+  font-family: var(--font-main);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+.db-header {
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.9),
+    rgba(2, 6, 23, 0.9)
+  );
+}
+
+.db-header h1 {
+  margin: 0;
+  font-size: 1.7rem;
+  letter-spacing: 0.03em;
+}
+
+.db-subtitle {
+  margin: 0.3rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.db-meta {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.env-pill {
+  align-self: flex-end;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  background: rgba(15, 118, 255, 0.08);
+}
+
+/* Layout */
+
+.db-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem 2.5rem 2rem;
+}
+
+.db-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Cards */
+
+.db-card {
+  background: radial-gradient(circle at top left, #1d283a 0, #020617 60%);
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+.db-card h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.db-card-desc {
+  margin: 0.45rem 0 0.8rem;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+}
+
+.db-card-body {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* States */
+
+.db-loading {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.db-error {
+  color: var(--danger);
+}
+
+/* Small components */
+
+.db-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.14);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  font-size: 0.7rem;
+  margin-right: 0.35rem;
+}
+
+.db-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.1rem 0 0;
+}
+
+.db-list li {
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed rgba(51, 65, 85, 0.5);
+}
+
+.db-list li:last-child {
+  border-bottom: none;
+}
+
+/* Footer */
+
+.db-footer {
+  padding: 0.9rem 2.5rem 1.3rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .db-main {
+    grid-template-columns: 1fr;
+    padding-inline: 1.2rem;
+  }
+
+  .db-header,
+  .db-footer {
+    padding-inline: 1.2rem;
+  }
+
+  .db-meta {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .env-pill {
+    align-self: flex-start;
+  }
+}
+

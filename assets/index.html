@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>DeepBlockAI – Crypto Intelligence Suite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="DeepBlockAI Dashboard – Resumen en tiempo real de bots de análisis cripto: Alpha Radar, New Token Explorer, DeFi Yield, Market Pulse, Whale Watcher y más."
+  />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="db-header">
+    <div>
+      <h1>DeepBlockAI Dashboard</h1>
+      <p class="db-subtitle">
+        Suite de bots de inteligencia cripto – datos en vivo desde tus pipelines Python.
+      </p>
+    </div>
+    <div class="db-meta">
+      <span id="last-updated">Última actualización: –</span>
+      <span class="env-pill">ENV: local / GitHub Pages</span>
+    </div>
+  </header>
+
+  <main class="db-main">
+    <!-- Columna izquierda -->
+    <section class="db-column">
+      <!-- Market Pulse -->
+      <article class="db-card" id="card-market-pulse">
+        <h2>📊 Market Pulse Daily</h2>
+        <p class="db-card-desc">
+          Resumen diario del mercado: market cap total, volumen, BTC/ETH, fear &amp; greed y cadenas líderes.
+        </p>
+        <div id="market-pulse-content" class="db-card-body db-loading">
+          Cargando datos de mercado...
+        </div>
+      </article>
+
+      <!-- Alpha Radar -->
+      <article class="db-card" id="card-alpha-radar">
+        <h2>🧭 Alpha Radar Bot</h2>
+        <p class="db-card-desc">
+          Escáner de tokens con FDV, liquidez, volumen y scoring propio para detectar posibles oportunidades.
+        </p>
+        <div id="alpha-radar-content" class="db-card-body db-loading">
+          Cargando TOP tokens...
+        </div>
+      </article>
+
+      <!-- New Token Explorer -->
+      <article class="db-card" id="card-new-token-explorer">
+        <h2>🧪 New Token Explorer</h2>
+        <p class="db-card-desc">
+          Tokens recién listados, filtrados por rug checks y ordenados por alpha_score.
+        </p>
+        <div id="nte-content" class="db-card-body db-loading">
+          Cargando nuevos tokens...
+        </div>
+      </article>
+    </section>
+
+    <!-- Columna derecha -->
+    <section class="db-column">
+      <!-- DeFi Yield Scanner -->
+      <article class="db-card" id="card-defi-yield">
+        <h2>💰 DeFi Yield Scanner</h2>
+        <p class="db-card-desc">
+          Top pools de rendimiento en DeFiLlama filtrados por TVL, APY máximo y sostenibilidad.
+        </p>
+        <div id="defi-yield-content" class="db-card-body db-loading">
+          Cargando yields...
+        </div>
+      </article>
+
+      <!-- Whale Watcher -->
+      <article class="db-card" id="card-whale-watcher">
+        <h2>🐋 Whale Watcher</h2>
+        <p class="db-card-desc">
+          Movimientos de ballenas y smart money en Ethereum / Solana.
+        </p>
+        <div id="whale-watcher-content" class="db-card-body db-loading">
+          Cargando eventos de ballenas...
+        </div>
+      </article>
+
+      <!-- Narratives -->
+      <article class="db-card" id="card-narratives">
+        <h2>🧠 Narratives AI Detector</h2>
+        <p class="db-card-desc">
+          Narrativas dominantes en el mercado cripto detectadas con análisis semántico.
+        </p>
+        <div id="narratives-content" class="db-card-body db-loading">
+          Cargando narrativas...
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="db-footer">
+    <span>DeepBlockAI &mdash; Crypto Intelligence Suite.</span>
+    <span>Hecho con Python, APIs cripto y GitHub Pages.</span>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
+
