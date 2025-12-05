@@ -1,0 +1,158 @@
+{
+  "bot": "market-pulse-daily",
+  "generated_at": "2025-12-05T19:10:36.944751+00:00",
+  "items": [
+    {
+      "type": "global",
+      "total_market_cap": 2857376670802.0,
+      "total_volume_24h": 189371956310.0,
+      "btc_dominance": 0.621514279914851
+    },
+    {
+      "type": "btc",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "price": 89000.0,
+      "volume_24h": 50674779273.0,
+      "percent_change_24h": -3.30873873519344,
+      "percent_change_7d": -2.06283547025174,
+      "market_cap": 1775900403999.0
+    },
+    {
+      "type": "eth",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "price": 2998.18,
+      "volume_24h": 28630634847.0,
+      "percent_change_24h": -4.20912592471465,
+      "percent_change_7d": -1.46970291838498,
+      "market_cap": 361435568782.0
+    },
+    {
+      "type": "fear_greed",
+      "value": 28,
+      "classification": "Fear"
+    },
+    {
+      "type": "chains",
+      "chains": [
+        {
+          "name": "Ethereum",
+          "tvl": 140049668354.09442,
+          "tokenSymbol": "ETH"
+        },
+        {
+          "name": "Solana",
+          "tvl": 19464428626.733707,
+          "tokenSymbol": "SOL"
+        },
+        {
+          "name": "Binance",
+          "tvl": 9548662362.125097,
+          "tokenSymbol": "BNB"
+        },
+        {
+          "name": "Bitcoin",
+          "tvl": 8254102480.975282,
+          "tokenSymbol": "BTC"
+        },
+        {
+          "name": "Base",
+          "tvl": 6184276200.867275,
+          "tokenSymbol": null
+        }
+      ]
+    },
+    {
+      "type": "gainers",
+      "coins": [
+        {
+          "name": "DeFiChain",
+          "symbol": "DFI",
+          "price": 0.0171098,
+          "market_cap": 15344712.0,
+          "percent_change_24h": 2305.26840698567,
+          "percent_change_7d": 1852.26110938033
+        },
+        {
+          "name": "PressOne",
+          "symbol": "PRS",
+          "price": 0.03500153,
+          "market_cap": 0.0,
+          "percent_change_24h": 2085.59892771178,
+          "percent_change_7d": 0.0
+        },
+        {
+          "name": "SONM",
+          "symbol": "SNM",
+          "price": 3.4,
+          "market_cap": 190418639.0,
+          "percent_change_24h": 1401.35173456055,
+          "percent_change_7d": 1953.81903369295
+        },
+        {
+          "name": "SingularityNET",
+          "symbol": "AGI",
+          "price": 0.112962,
+          "market_cap": 29832790.0,
+          "percent_change_24h": 537.82607074146,
+          "percent_change_7d": 511.643824647258
+        },
+        {
+          "name": "TronSecureHybrid",
+          "symbol": "TSCHYBRID",
+          "price": 6.002e-05,
+          "market_cap": 0.0,
+          "percent_change_24h": 473.694504174612,
+          "percent_change_7d": 595.893655844152
+        }
+      ]
+    },
+    {
+      "type": "losers",
+      "coins": [
+        {
+          "name": "DAOFi",
+          "symbol": "DAOFI",
+          "price": 0.110672,
+          "market_cap": 6384944.0,
+          "percent_change_24h": 7.35452912981477,
+          "percent_change_7d": 24.3985835669639
+        },
+        {
+          "name": "1X Short Compound Token Token",
+          "symbol": "COMPHEDGE",
+          "price": 67.06,
+          "market_cap": 0.0,
+          "percent_change_24h": 7.38729377756896,
+          "percent_change_7d": -15.7706318301721
+        },
+        {
+          "name": "DAOBet",
+          "symbol": "BET",
+          "price": 0.00201549,
+          "market_cap": 0.0,
+          "percent_change_24h": 7.4547641911797,
+          "percent_change_7d": 67.7278831016375
+        },
+        {
+          "name": "Crypterium",
+          "symbol": "CRPT",
+          "price": 0.116808,
+          "market_cap": 9966112.0,
+          "percent_change_24h": 7.46597073376838,
+          "percent_change_7d": 13.3272857125932
+        },
+        {
+          "name": "Consentium",
+          "symbol": "CSM",
+          "price": 0.00110287,
+          "market_cap": 0.0,
+          "percent_change_24h": 7.49008622390975,
+          "percent_change_7d": 15.8094233333964
+        }
+      ]
+    }
+  ],
+  "meta": {}
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "chain": "ethereum",
+    "tx_hash": "0xeth_tx_hash_example_2",
+    "wallet": "0x9876543210abcdef9876543210abcdef98765432",
+    "wallet_label": null,
+    "direction": "deposit_cex",
+    "token_symbol": "USDC",
+    "token_address": null,
+    "amount_token": 50000,
+    "usd_value": 50000.0,
+    "timestamp": 1764962244,
+    "notes": "Depósito grande a CEX (posible venta)",
+    "extra": {}
+  },
+  {
+    "chain": "ethereum",
+    "tx_hash": "0xeth_tx_hash_example_1",
+    "wallet": "0x1234567890abcdef1234567890abcdef12345678",
+    "wallet_label": "mock_smart_wallet",
+    "direction": "buy",
+    "token_symbol": "EXMPL",
+    "token_address": "0xexampletokenaddress",
+    "amount_token": 125000,
+    "usd_value": 15000.0,
+    "timestamp": 1764962304,
+    "notes": "Compra fuerte en token nuevo",
+    "extra": {}
+  },
+  {
+    "chain": "solana",
+    "tx_hash": "sol_tx_hash_example_1",
+    "wallet": "SoLaNaWalLeTAddreSs123456789",
+    "wallet_label": "sol_smart_wallet",
+    "direction": "buy",
+    "token_symbol": "SOLGEM",
+    "token_address": null,
+    "amount_token": 20000,
+    "usd_value": 11000.0,
+    "timestamp": 1764962064,
+    "notes": "Compra fuerte en memecoin de Solana",
+    "extra": {}
+  }
+]

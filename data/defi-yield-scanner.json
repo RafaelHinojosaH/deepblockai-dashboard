@@ -1,0 +1,117 @@
+{
+  "bot": "defi-yield-scanner",
+  "generated_at": "2025-12-05T18:59:51.702786+00:00",
+  "items": [
+    {
+      "project": "francium",
+      "symbol": "RAY-USDC",
+      "chain": "Solana",
+      "tvlUsd": 954303.0,
+      "apy": 237.47411,
+      "apyBase": 237.47411,
+      "apyReward": null,
+      "score": 89.92,
+      "url": "https://defillama.com/yields/pool/aa0a302b-ec9b-4a4f-827d-a7e39a9cb903"
+    },
+    {
+      "project": "orca-dex",
+      "symbol": "ZEC-USDC",
+      "chain": "Solana",
+      "tvlUsd": 515650.0,
+      "apy": 198.1717,
+      "apyBase": 198.1717,
+      "apyReward": null,
+      "score": 81.06,
+      "url": "https://defillama.com/yields/pool/3de7947c-e199-4842-a496-a775f59d6ba3"
+    },
+    {
+      "project": "raydium-amm",
+      "symbol": "USDC-THETOKEN",
+      "chain": "Solana",
+      "tvlUsd": 4139573.0,
+      "apy": 165.17,
+      "apyBase": 165.17,
+      "apyReward": 0,
+      "score": 77.85,
+      "url": "https://defillama.com/yields/pool/6848101a-466d-47b7-ae73-aaa8686503f9"
+    },
+    {
+      "project": "orca-dex",
+      "symbol": "SOL-FARTCOIN",
+      "chain": "Solana",
+      "tvlUsd": 1097573.0,
+      "apy": 174.63725,
+      "apyBase": 174.63725,
+      "apyReward": 0,
+      "score": 77.58,
+      "url": "https://defillama.com/yields/pool/5da12137-c29a-45bb-8893-f6c01400ae02"
+    },
+    {
+      "project": "orca-dex",
+      "symbol": "SOL-ORE",
+      "chain": "Solana",
+      "tvlUsd": 620407.0,
+      "apy": 169.50513,
+      "apyBase": 169.50513,
+      "apyReward": 0,
+      "score": 75.62,
+      "url": "https://defillama.com/yields/pool/64bdbf93-387a-4215-b5ae-6fcc908d2e48"
+    },
+    {
+      "project": "orca-dex",
+      "symbol": "SOL-USELESS",
+      "chain": "Solana",
+      "tvlUsd": 780120.0,
+      "apy": 162.91491,
+      "apyBase": 162.91491,
+      "apyReward": 0,
+      "score": 74.68,
+      "url": "https://defillama.com/yields/pool/d0dc7d4d-f498-4d32-ac19-183c55109f09"
+    },
+    {
+      "project": "notional-v3",
+      "symbol": "NUSDC",
+      "chain": "Ethereum",
+      "tvlUsd": 764936.0,
+      "apy": 163.66896,
+      "apyBase": 158.94717,
+      "apyReward": 4.72178,
+      "score": 74.22,
+      "url": "https://defillama.com/yields/pool/1adf55ea-0ed6-455f-bf4d-2dde9fef91a7"
+    },
+    {
+      "project": "aerodrome-slipstream",
+      "symbol": "USDC-AERO",
+      "chain": "Base",
+      "tvlUsd": 1483819.0,
+      "apy": 226.11267,
+      "apyBase": 62.78148,
+      "apyReward": 163.33119,
+      "score": 73.92,
+      "url": "https://defillama.com/yields/pool/31ed7657-e02c-427b-8e3e-c0bf24e6cb9b"
+    },
+    {
+      "project": "aerodrome-slipstream",
+      "symbol": "WETH-MAMO",
+      "chain": "Base",
+      "tvlUsd": 624922.0,
+      "apy": 244.50249,
+      "apyBase": 10.32102,
+      "apyReward": 234.18147,
+      "score": 71.48,
+      "url": "https://defillama.com/yields/pool/b1b24298-d957-48cb-ae63-ae43d7b7ef86"
+    },
+    {
+      "project": "aerodrome-slipstream",
+      "symbol": "USDC-CBBTC",
+      "chain": "Base",
+      "tvlUsd": 8525595.0,
+      "apy": 205.64527,
+      "apyBase": 42.98174,
+      "apyReward": 162.66353,
+      "score": 71.3,
+      "url": "https://defillama.com/yields/pool/ff82c362-dea1-4946-b3b1-92ebd5100b1e"
+    }
+  ],
+  "meta": {}
+}
