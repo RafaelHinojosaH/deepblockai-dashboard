@@ -401,49 +401,50 @@
 
   <script>
     // Config para cada bot y ruta de su JSON dentro del repo
-    const BOTS = [
-      {
-        id: "alpha-radar",
-        name: "Alpha Radar Bot",
-        tag: "DEX Alpha",
-        description: "Escanea pares en DexScreener y rankea tokens por score.",
-        jsonPath: "data/alpha-radar-latest.json",
-        repo: "https://github.com/RafaelHinojosaH/deepblock-alpha-radar-bot"
-      },
-      {
-        id: "defi-yield-scanner",
-        name: "DeFi Yield Scanner",
-        tag: "Yields",
-        description: "Busca yields sostenibles en DeFiLlama y calcula un score de riesgo.",
-        jsonPath: "data/defi-yield-scanner-latest.json",
-        repo: "https://github.com/RafaelHinojosaH/deepblock-defi-yield-scanner"
-      },
-      {
-        id: "market-pulse-daily",
-        name: "Market Pulse Daily",
-        tag: "Market Pulse",
-        description: "Resumen diario: market cap, BTC/ETH, fear & greed, chains y movers.",
-        jsonPath: "data/market-pulse-daily-latest.json",
-        repo: "https://github.com/RafaelHinojosaH/market-pulse-daily"
-      },
-      {
-        id: "new-token-explorer",
-        name: "New Token Explorer",
-        tag: "New Tokens",
-        description: "Explorador de tokens recién listados con filtros anti-rug.",
-        jsonPath: "data/new-token-explorer-latest.json",
-        repo: "https://github.com/RafaelHinojosaH/new-token-explorer"
-      },
-      {
-        id: "whale-watcher",
-        name: "Whale Watcher",
-        tag: "Whales",
-        description: "Monitorea movimientos grandes de smart money y ballenas.",
-        jsonPath: "data/whale-watcher-latest.json",
-        repo: "https://github.com/RafaelHinojosaH/whale-watcher"
-      }
-      // Puedes agregar airdrop-finder, narratives, etc. con el mismo formato
-    ];
+const BOTS = [
+  {
+    id: "alpha-radar",
+    name: "Alpha Radar Bot",
+    tag: "DEX Alpha",
+    description: "Escanea pares en DexScreener y rankea tokens por score.",
+    jsonPath: "data/alpha-radar-latest.json",
+    repo: "https://github.com/RafaelHinojosaH/deepblock-alpha-radar-bot"
+  },
+  {
+    id: "defi-yield-scanner",
+    name: "DeFi Yield Scanner",
+    tag: "Yields",
+    description: "Busca yields sostenibles en DeFiLlama y calcula un score de riesgo.",
+    // usa uno de los que ya existen:
+    jsonPath: "data/defi-yield-latest.json",    // o "data/defi-yield-scanner.json"
+    repo: "https://github.com/RafaelHinojosaH/deepblock-defi-yield-scanner"
+  },
+  {
+    id: "market-pulse-daily",
+    name: "Market Pulse Daily",
+    tag: "Market Pulse",
+    description: "Resumen diario: market cap, BTC/ETH, fear & greed, chains y movers.",
+    // aquí el archivo que ya existe:
+    jsonPath: "data/market-pulse-latest.json",
+    repo: "https://github.com/RafaelHinojosaH/market-pulse-daily"
+  },
+  {
+    id: "new-token-explorer",
+    name: "New Token Explorer",
+    tag: "New Tokens",
+    description: "Explorador de tokens recién listados con filtros anti-rug.",
+    jsonPath: "data/new-token-explorer-latest.json",   // lo creamos abajo
+    repo: "https://github.com/RafaelHinojosaH/new-token-explorer"
+  },
+  {
+    id: "whale-watcher",
+    name: "Whale Watcher",
+    tag: "Whales",
+    description: "Monitorea movimientos grandes de smart money y ballenas.",
+    jsonPath: "data/whale-watcher-latest.json",
+    repo: "https://github.com/RafaelHinojosaH/whale-watcher"
+  }
+];
 
     function createBotCard(bot) {
       const card = document.createElement("article");
