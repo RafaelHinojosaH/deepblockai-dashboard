@@ -1,4 +1,44 @@
+# ===============================
+# 🔥 DeepBlockAI Dashboard Ignore
+# ===============================
+
+# ---- Archivos del sistema macOS ----
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# ---- Python ----
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Archivos de virtualenv (aunque aquí no usamos env)
+env/
+venv/
+.venv/
+
+# ---- Logs ----
+*.log
+*.tmp
+
+# ---- Editor config ----
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ---- Node (solo por si después agregas tooling) ----
+node_modules/
+
+# ---- Builds ----
+dist/
+build/
+.cache/
+
+# ----------------------------------------
+# ⚠️ NO ignorar data/*.json
+# Porque se sirven en GitHub Pages
+# ----------------------------------------
 
