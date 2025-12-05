@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>DeepBlockAI Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Dashboard público de DeepBlockAI: bots de alpha, yields, ballenas y market pulse."
+  />
+  <style>
+    :root {
+      --bg: #02040a;
+      --bg-elevated: #050816;
+      --bg-soft: #0b1020;
+      --accent: #00e5ff;
+      --accent-soft: rgba(0, 229, 255, 0.15);
+      --accent-2: #14f4a4;
+      --text: #e4f3ff;
+      --text-soft: #9bb3c9;
+      --danger: #ff4b6a;
+      --success: #27e58a;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --radius-xl: 18px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #071322 0, #02040a 50%, #010208 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #00e5ff 0, #0077ff 40%, #01040a 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 22px rgba(0, 229, 255, 0.7);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-text h1 span.badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(20, 244, 164, 0.15);
+      color: var(--accent-2);
+      border: 1px solid rgba(20, 244, 164, 0.5);
+      text-transform: uppercase;
+    }
+
+    .brand-text p {
+      margin-top: 4px;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(25, 39, 66, 0.9), rgba(4, 9, 20, 0.9));
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      box-shadow: 0 0 10px rgba(20, 244, 164, 0.8);
+    }
+
+    .pill-dot.red {
+      background: var(--danger);
+      box-shadow: 0 0 10px rgba(255, 75, 106, 0.9);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .panel {
+      background: linear-gradient(145deg, rgba(9, 15, 33, 0.96), rgba(4, 7, 18, 0.98));
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .panel-title {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .panel-caption {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .bots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .bot-card {
+      position: relative;
+      background: radial-gradient(circle at 0 0, rgba(0, 229, 255, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(20, 244, 164, 0.1), transparent 50%),
+        var(--bg-elevated);
+      border-radius: 16px;
+      padding: 14px 14px 12px;
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+
+    .bot-pill {
+      font-size: 0.73rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 229, 255, 0.6);
+      color: var(--accent);
+      background: rgba(0, 229, 255, 0.09);
+      display: inline-block;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .bot-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .bot-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+    }
+
+    .bot-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 4px;
+    }
+
+    .bot-meta span {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      margin-right: 4px;
+      display: inline-block;
+      background: var(--success);
+      box-shadow: 0 0 10px rgba(39, 229, 138, 0.9);
+    }
+
+    .status-dot.offline {
+      background: #666;
+      box-shadow: none;
+    }
+
+    .bot-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .stat-chip {
+      font-size: 0.75rem;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(7, 16, 37, 0.95);
+      border: 1px solid rgba(116, 145, 194, 0.5);
+      color: var(--text-soft);
+    }
+
+    .stat-chip strong {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .bot-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    .bot-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .bot-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .badge-mini {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-2);
+    }
+
+    .panel-secondary {
+      margin-top: 12px;
+    }
+
+    .panel-secondary p {
+      font-size: 0.83rem;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .panel-secondary code {
+      font-size: 0.78rem;
+      background: rgba(8, 16, 36, 0.95);
+      padding: 3px 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(63, 93, 144, 0.7);
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .error-text {
+      color: var(--danger);
+      font-size: 0.78rem;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand-logo">
+        <!-- Cambia a .jpg si tu archivo es JPG -->
+        <img src="assets/deepblockai-logo.png" alt="DeepBlockAI logo" />
+      </div>
+      <div class="brand-text">
+        <h1>
+          DeepBlockAI
+          <span class="badge">Crypto Alpha &amp; Tools</span>
+        </h1>
+        <p>Dashboard público de tus bots: alpha, yields, ballenas, market pulse y nuevos tokens.</p>
+      </div>
+    </header>
+
+    <div class="meta-bar">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Live snapshot desde JSON en <code>data/*.json</code>
+      </div>
+      <div class="pill">
+        <span class="pill-dot red"></span>
+        Datos se actualizan cuando haces commit desde tu máquina
+      </div>
+    </div>
+
+    <main>
+      <section class="panel" id="bots-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Bots de DeepBlockAI</h2>
+          <span class="panel-caption">Estado &amp; últimos datos cargados</span>
+        </div>
+        <div id="bots-grid" class="bots-grid">
+          <!-- JS inyecta aquí las tarjetas -->
+        </div>
+      </section>
+
+      <aside>
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Cómo funciona</h2>
+          </div>
+          <div class="panel-secondary">
+            <p>1. Cada bot genera un JSON y lo guarda en <code>data/&lt;bot-name&gt;-latest.json</code>.</p>
+            <p>2. Haces <code>git add data/*.json &amp;&amp; git commit &amp;&amp; git push</code>.</p>
+            <p>3. GitHub Pages sirve estos archivos y este dashboard los lee con JavaScript.</p>
+            <p>4. Puedes compartir este enlace en tu <strong>CV</strong> y <strong>LinkedIn</strong> como demo técnica.</p>
+          </div>
+        </section>
+
+        <section class="panel panel-secondary">
+          <div class="panel-header">
+            <h2 class="panel-title">Stack</h2>
+          </div>
+          <p>🧠 Bots en Python</p>
+          <p>📦 JSON estáticos versionados en Git</p>
+          <p>🌐 Frontend ligero en HTML + CSS + JS vanilla</p>
+          <p>☁️ Hosting gratis con GitHub Pages</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      Built with 💙 by DeepBlockAI ·
+      <a href="https://github.com/RafaelHinojosaH" target="_blank" rel="noreferrer">GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    // Config para cada bot y ruta de su JSON dentro del repo
+    const BOTS = [
+      {
+        id: "alpha-radar",
+        name: "Alpha Radar Bot",
+        tag: "DEX Alpha",
+        description: "Escanea pares en DexScreener y rankea tokens por score.",
+        jsonPath: "data/alpha-radar-latest.json",
+        repo: "https://github.com/RafaelHinojosaH/deepblock-alpha-radar-bot"
+      },
+      {
+        id: "defi-yield-scanner",
+        name: "DeFi Yield Scanner",
+        tag: "Yields",
+        description: "Busca yields sostenibles en DeFiLlama y calcula un score de riesgo.",
+        jsonPath: "data/defi-yield-scanner-latest.json",
+        repo: "https://github.com/RafaelHinojosaH/deepblock-defi-yield-scanner"
+      },
+      {
+        id: "market-pulse-daily",
+        name: "Market Pulse Daily",
+        tag: "Market Pulse",
+        description: "Resumen diario: market cap, BTC/ETH, fear & greed, chains y movers.",
+        jsonPath: "data/market-pulse-daily-latest.json",
+        repo: "https://github.com/RafaelHinojosaH/market-pulse-daily"
+      },
+      {
+        id: "new-token-explorer",
+        name: "New Token Explorer",
+        tag: "New Tokens",
+        description: "Explorador de tokens recién listados con filtros anti-rug.",
+        jsonPath: "data/new-token-explorer-latest.json",
+        repo: "https://github.com/RafaelHinojosaH/new-token-explorer"
+      },
+      {
+        id: "whale-watcher",
+        name: "Whale Watcher",
+        tag: "Whales",
+        description: "Monitorea movimientos grandes de smart money y ballenas.",
+        jsonPath: "data/whale-watcher-latest.json",
+        repo: "https://github.com/RafaelHinojosaH/whale-watcher"
+      }
+      // Puedes agregar airdrop-finder, narratives, etc. con el mismo formato
+    ];
+
+    function createBotCard(bot) {
+      const card = document.createElement("article");
+      card.className = "bot-card";
+      card.id = `bot-${bot.id}`;
+
+      card.innerHTML = `
+        <div class="bot-pill">${bot.tag}</div>
+        <div class="bot-title">${bot.name}</div>
+        <div class="bot-subtitle">${bot.description}</div>
+        <div class="bot-meta">
+          <span><span class="status-dot offline"></span><span class="badge-mini">Sin datos</span></span>
+          <span class="bot-updated">Último run: —</span>
+        </div>
+        <div class="bot-stats" data-bot-stats></div>
+        <div class="bot-footer">
+          <span class="bot-meta-extra"></span>
+          <a href="${bot.repo}" target="_blank" rel="noreferrer">Ver repo →</a>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function summarizeData(bot, data) {
+      // Intentamos ser tolerantes con diferentes estructuras de JSON
+      let updated =
+        data.updated_at ||
+        data.run_at ||
+        data.generated_at ||
+        data.last_run ||
+        null;
+
+      const items =
+        data.items ||
+        data.tokens ||
+        data.pools ||
+        data.events ||
+        data.coins ||
+        [];
+
+      const stats = [];
+
+      if (Array.isArray(items)) {
+        stats.push({ label: "Items", value: items.length.toString() });
+      }
+
+      // Algunos campos genéricos que solemos usar
+      if (typeof data.avg_score === "number") {
+        stats.push({ label: "Avg score", value: data.avg_score.toFixed(1) });
+      }
+      if (typeof data.top_score === "number") {
+        stats.push({ label: "Top score", value: data.top_score.toFixed(1) });
+      }
+      if (typeof data.fng_value === "number") {
+        stats.push({ label: "Fear & Greed", value: data.fng_value.toString() });
+      }
+
+      return { updated, stats };
+    }
+
+    async function loadBotData(bot) {
+      const card = document.getElementById(`bot-${bot.id}`);
+      const updatedEl = card.querySelector(".bot-updated");
+      const statusDot = card.querySelector(".status-dot");
+      const statsContainer = card.querySelector("[data-bot-stats]");
+      const extraMeta = card.querySelector(".bot-meta-extra");
+
+      try {
+        const resp = await fetch(bot.jsonPath, { cache: "no-store" });
+        if (!resp.ok) {
+          updatedEl.textContent = "Último run: sin JSON";
+          return;
+        }
+        const data = await resp.json();
+        const { updated, stats } = summarizeData(bot, data);
+
+        statusDot.classList.remove("offline");
+        statusDot.title = "Datos cargados desde JSON";
+        updatedEl.textContent = updated
+          ? `Último run: ${updated}`
+          : "Último run: (sin timestamp)";
+
+        statsContainer.innerHTML = "";
+        if (stats.length === 0) {
+          const span = document.createElement("span");
+          span.className = "stat-chip";
+          span.textContent = "JSON cargado ✔";
+          statsContainer.appendChild(span);
+        } else {
+          for (const s of stats) {
+            const span = document.createElement("span");
+            span.className = "stat-chip";
+            span.innerHTML = `<strong>${s.value}</strong> · ${s.label}`;
+            statsContainer.appendChild(span);
+          }
+        }
+
+        extraMeta.textContent = "Fuente: data/" + bot.jsonPath.split("/").pop();
+      } catch (err) {
+        console.error("Error cargando JSON de", bot.id, err);
+        updatedEl.textContent = "Error leyendo JSON";
+        const errorSpan = document.createElement("span");
+        errorSpan.className = "error-text";
+        errorSpan.textContent = "Revisa que el archivo exista en data/ y esté en GitHub.";
+        statsContainer.appendChild(errorSpan);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("bots-grid");
+      BOTS.forEach(bot => {
+        const card = createBotCard(bot);
+        grid.appendChild(card);
+      });
+
+      BOTS.forEach(loadBotData);
+    });
+  </script>
+</body>
+</html>
+
